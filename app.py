@@ -20,7 +20,7 @@ def AiModel():
     output = model(FloatTensor(body['foods'])).detach().numpy()
     # result를 가공하는 작업
     result = [1, 2, 3, 4]
-    return jsonify(result)
+    return jsonify({ 'recommendation': result })
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
