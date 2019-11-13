@@ -7,8 +7,8 @@ Original file is located at
     https://colab.research.google.com/drive/10kFaZOP4q3OfXsp8vxHKHH8hqozeQhT5
 """
 
-from google.colab import drive
-drive.mount('/content/gdrive')
+# from google.colab import drive
+# drive.mount('/content/gdrive')
 
 import os
 import torch
@@ -27,7 +27,8 @@ batch_size = 20
 learning_rate = 1e-3
 
 #t1_data = pandas dataframe
-t1_data = pd.read_csv('gdrive/My Drive/Colab Notebooks/data2/11.08.csv')
+# t1_data = pd.read_csv('gdrive/My Drive/Colab Notebooks/data2/11.08.csv')
+t1_data = pd.read_csv('./11.08.csv')
 
 nb_users = int(max(t1_data.iloc[:,0])) + 1
 nb_foods = int(max(t1_data.iloc[:,1])) + 1
