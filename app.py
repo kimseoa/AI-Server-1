@@ -12,12 +12,14 @@ Request:
 Response:
     body:
         recommendation: number[]
-
 '''
 
 @app.route('/', methods=['POST'])
 def AiModel():
     data= request.json['foods']
+    print(type(data)) #list
+    #이부분은 파이토치? 로 가공해서 리스트로 주세요
+    # data =  ....
     return jsonify(data)
 
 
@@ -25,9 +27,7 @@ def AiModel():
 # def AiModel():
 #     body = request.get_json(force=True)
 #     output = model(FloatTensor(body['foods'])).detach().numpy()
-#     # result를 가공하는 작업
-#     result = [1, 2, 3, 4]
-#     return jsonify({ 'recommendation': result })
+
 
 if __name__ == "__main__":
     app.run(port=5000)
