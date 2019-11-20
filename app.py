@@ -5,34 +5,37 @@ from load import model
 app = Flask(__name__)
 
 '''
+Web => AI 보내는거
 Request:
     body:
-        foods: number[]
+    
+    1)include
+     사용자가 선택한 좋아하는 음식의 index 값의 리스트
+     ex) [1,3,5,7,9,]  // 12개
+     
+    2)exclude
+     사용자가 선택한 싫어하는 음식의 이름 리스트
+     ex)["가지", "생선"]
 
+AI=> Web으로 보내줘야하는거
 Response:
     body:
-        recommendation: number[]
+        food: []
+        //추천 음식 리스트 (6개)
 '''
 
 @app.route('/', methods=['POST'])
 def AiModel():
-    data= request.json['foods']
-    print(type(data)) #list
-    #이부분은 파이토치? 로 가공해서 리스트로 주세요
-    # data =  ....
+    include= request.json['include']
+    exclude=request.json['exclude']
+
+    print(include)
+    print(exclude)
+
+
+    data =include
+
     return jsonify(data)
-
-
-# @app.route('/', methods=['POST'])
-# def AiModel():
-#     body = request.get_json(force=True)
-#     output = model(FloatTensor(body['foods'])).detach().numpy()
-#     print(output)
-#     # result를 가공하는 작업
-#     result = [1, 2, 3, 4]
-#     # return jsonify({ 'recommendation': result })
-#     return Response(status=400)
 
 if __name__ == "__main__":
     app.run(port=5000)
-    # app.run(debug=True, port=5000)
