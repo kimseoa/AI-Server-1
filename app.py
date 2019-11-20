@@ -26,12 +26,8 @@ Response:
 
 @app.route('/', methods=['POST'])
 def AiModel():
-    include= request.json['include']
-    exclude=request.json['exclude']
-
-    print(include)
-    print(exclude)
-
+    include= request.json['include'] # 좋아하는 음식 (인덱스 리스트)
+    exclude=request.json['exclude'] # 싫어하는 음식 (이름 리스트)
 
     data =include
 
